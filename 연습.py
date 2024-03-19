@@ -1,2 +1,1 @@
 i=input()
-a=input()
