@@ -1,4 +1,3 @@
-<div align=center>
-<p>솔브닥 닉네임:<font color="#A643FE">Ercnard</font></p>
-라이벌 환영
-</div>
+# Solved.ac 닉네임 : Ercnard <br>
+ 라이벌 추가 환영 <br>
+ [바로가기](https://solved.ac/profile/ercnard)  
