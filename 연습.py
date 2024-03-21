@@ -1,2 +1,0 @@
-i=input()
-b=input()
