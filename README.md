@@ -1,4 +1,4 @@
 <div align=center>
-<h>솔브닥 닉네임:Ercnard</h>
+<p>솔브닥 닉네임:Ercnard</p>
 라이벌 추가해주세요
 </div>
