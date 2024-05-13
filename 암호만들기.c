@@ -9,18 +9,33 @@ void pick(char* pw, int pwSize, int* bucket, int bucketSize, int toPick) {
             printf("%c", pw[bucket[i]]);
         printf("\n"); 
     }
-    int smallest;
-    int  lastIndex = bucketSize - toPick - 1;
 
-    if (bucketSize == toPick)
-        smallest = 0;
-    else
-        smallest = bucket[lastIndex] + 1;
-
-    for (int i = smallest; i < pwSize; i++) {
-        bucket[lastIndex + 1] = i;
+   
+	int lastIndex=bucketSize-toPick;
+	
+    for (int i = 0; i < pwSize; i++) { 
+    	int flag=0;
+    	for(int j=0;j<lastIndex;j++){
+    		if(bucket[j]==i) flag=1;
+    		}
+    		if(flag==1) continue;
+        //if(i!=0&&(int)pw[i]<=(int)pw[bucket[lastIndex-1]]) continue;
+      	
+        bucket[lastIndex] = i;
         pick(pw, pwSize, bucket, bucketSize, toPick - 1);
     }
+}
+
+sort(char* pw, int n){
+	int temp;
+	for (int i = 0; i < n-1; i++) { 
+        for (int  j = 0; j < n-1-i; j++) {
+        	   if(pw[j]>pw[j+1]){
+        	   temp=pw[j];
+    			pw[j]=pw[j+1];
+    			pw[j+1]=temp;}
+        	}
+        }
 }
 
 int main() {
@@ -31,7 +46,8 @@ int main() {
 
     for (int i = 0; i < C; i++) 
         scanf("%s", &pw[i]);
-
+	
+	sort(pw,C);
     //중간에 정렬하는거 넣기
 
     pick(pw, C, bucket, L, L);
