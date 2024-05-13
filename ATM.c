@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void merge(int* A, int p, int q, int r) {
-	int i = p, j = q+1, now = 0;
+	int i = p, j = q+1, now = p;
 	int* bucket = (int*)malloc(sizeof(int) * (r-p+1));
 
 	while (i <= q && j <= r) {
@@ -12,15 +12,18 @@ void merge(int* A, int p, int q, int r) {
 		else bucket[now++] = A[i++];
 	}
 	
-	while (i <= q) {
-		bucket[now++] = A[i++];
+	if (i > p) {
+		for (int l = j; l <= r; l++)
+			bucket[now++] = A[l];
 	}
-	while (j < r) {
-		bucket[now++] = A[j++];
+	// 남아 있는 값들을 일괄 복사
+	else {
+		for (int l = i; l <= p; l++)
+			bucket[now++] = A[l];
 	}
 
-	for (int k = p; k < r; k++) {
-		A[k] = bucket[k-p];
+	for (int k = p; k <= r; k++) {
+		A[k] = bucket[k];
 	}
 	free(bucket);
 }
