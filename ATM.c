@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void merge(int* A, int p, int q, int r) {
-	int i = p, j = q+1, now = p;
+	int i = p, j = q+1, now = 0;
 	int* bucket = (int*)malloc(sizeof(int) * (r-p+1));
 
 	while (i <= q && j <= r) {
@@ -12,19 +12,15 @@ void merge(int* A, int p, int q, int r) {
 		else bucket[now++] = A[i++];
 	}
 	
-	if (i > p) {
-		for (int l = j; l <= r; l++)
-			bucket[now++] = A[l];
-	}
-	// 남아 있는 값들을 일괄 복사
-	else {
-		for (int l = i; l <= p; l++)
-			bucket[now++] = A[l];
-	}
+	while (i <= q)
+		bucket[now++] = A[i++];
+	while (j <= r)
+		bucket[now++] = A[j++];
 
-	for (int k = p; k <= r; k++) {
-		A[k] = bucket[k];
+	for (int k = 0; k < now; k++) {
+		A[p+k] = bucket[k];
 	}
+	
 	free(bucket);
 }
 void mergeSort(int* A, int p, int r) {
@@ -48,15 +44,14 @@ int main(){
 		scanf("%d", &a[i]);
 
 	mergeSort(a, 0, n-1);
-	for (int i = 0; i < n; i++)
+	/*for (int i = 0; i < n; i++)
 		printf("%d ", a[i]);
-	printf("\n");
+	printf("\n");*/
 	int sum = 0;
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j <= i; j++) {
 			sum += a[j];
-			printf("%d ", a[j]);
 		}
 	}
 
