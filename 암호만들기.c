@@ -2,31 +2,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void pick(char* pw, int pwSize, int* bucket, int bucketSize, int toPick) {
+void pick(char item[], int n, int bucket[], int m, int toPick){
+	int i, lastIndex, smallest;
 
-    if (toPick == 0) {
-        for (int i = 0; i < bucketSize; i++)
-            printf("%c", pw[bucket[i]]);
-        printf("\n"); 
-    }
+	if(toPick == 0) {
+        int flag2=0, flag3=0;
+        for(int i=0;i<m;i++){
+            if(item[bucket[i]]=='a'||item[bucket[i]]=='e'||item[bucket[i]]=='i'||item[bucket[i]]=='o'||item[bucket[i]]=='u')
+                flag2=1;
+            else flag3+=1;
+        }
+        if(flag2==1&&flag3>1){
+		for(i=0; i<m; i++)
+			//printf("%d ", bucket[i]);
+			printf("%c", item[bucket[i]]);
+		printf("\n");
+        }
+		return;
 
-   
-	int lastIndex=bucketSize-toPick;
-	
-    for (int i = 0; i < pwSize; i++) { 
-    	int flag=0;
-    	for(int j=0;j<lastIndex;j++){
-    		if(bucket[j]==i) flag=1;
-    		}
-    		if(flag==1) continue;
-        //if(i!=0&&(int)pw[i]<=(int)pw[bucket[lastIndex-1]]) continue;
-      	
-        bucket[lastIndex] = i;
-        pick(pw, pwSize, bucket, bucketSize, toPick - 1);
-    }
+	}
+
+	lastIndex = m - toPick - 1;
+
+	if(m == toPick)
+		smallest = 0;
+	else
+		smallest = bucket[lastIndex] + 1;
+
+	for(i=smallest; i<n ; i++) {
+		bucket[lastIndex+1] = i;
+		pick(item, n, bucket, m, toPick-1);
+	}
 }
 
-sort(char* pw, int n){
+void sort(char* pw, int n){
 	int temp;
 	for (int i = 0; i < n-1; i++) { 
         for (int  j = 0; j < n-1-i; j++) {
