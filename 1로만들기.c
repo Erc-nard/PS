@@ -13,6 +13,8 @@ void counting(int n,int count,int* min){
 int main(){
     int n,count=0,min=9999;
     scanf("%d",&n);
+
+    
     counting(n,count,&min);
-    printf("%d",min); //시간초과 ... 나중에 dp로 ㄱㄱ
+    printf("%d",min); 
 }
