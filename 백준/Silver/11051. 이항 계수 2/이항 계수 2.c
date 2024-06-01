@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long long comb(long long n, long long r,long long **m){
+long long comb(long long n, long long r,long long **m){ //long long 
 
     if(r==0 || r==n) return 1;
     if(m[n-1][r-1]==-1){
