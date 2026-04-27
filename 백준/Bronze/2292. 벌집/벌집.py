@@ -1,0 +1,13 @@
+n=int(input())
+i=1
+min1=1
+max1=1
+while(True):
+    min1=max1
+    max1=3*i*i-3*i+1
+    if(min1<n<=max1):
+        break
+    if(n==1):
+    	break
+    i+=1
+print(i)

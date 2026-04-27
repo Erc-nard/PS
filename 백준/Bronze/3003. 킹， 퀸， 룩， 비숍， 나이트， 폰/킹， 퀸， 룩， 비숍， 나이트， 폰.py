@@ -1,0 +1,8 @@
+a = input().split()
+b = 1- int(a[0])
+c = 1- int(a[1])
+d = 2 -int(a[2])
+e = 2 -int(a[3])
+f = 2- int(a[4])
+g = 8 -int(a[5])
+print(b,c,d,e,f,g)
